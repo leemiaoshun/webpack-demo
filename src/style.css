@@ -5,3 +5,8 @@
 body {
   background: url(./img/fehelper-www-webpackjs-com-guides-asset-management-1574845141553.png) no-repeat center center;
 }
+
+img {
+  width: 50px;
+  height: 100px;
+}
