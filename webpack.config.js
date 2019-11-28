@@ -1,22 +1,21 @@
 const path = require("path");
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+// 官网的引用方式已经过期最新的 clean-webpack-plugin不能直接引用， 并且传参不支持字符串
 
 module.exports = {
-  entry: "./src/index.js",
+  entry: {
+    app: "./src/index.js",
+    print: "./src/print.js"
+  },
   output: {
-    filename: 'bundle.js',
+    filename: '[name].bundle.js',
     path: path.resolve(__dirname, 'dist')
   },
-  module: {
-    rules: [
-    {
-      test: /\.css$/,
-      use: [
-        'style-loader',
-        'css-loader',
-      ]
-    }, {
-      test: /\.(png|jpg|svg|gif)$/,
-      use: ['file-loader']
-    }]
-  }
+  plugins: [
+    new CleanWebpackPlugin(),
+    new HtmlWebpackPlugin({
+      title: 'Output Management'
+    })
+  ]
 }
