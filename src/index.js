@@ -15,3 +15,9 @@ function component() {
 }
 
 document.body.appendChild(component());
+if (module.hot) {
+  module.hot.accpet('./print.js', () => {
+    console.log('acess');
+    printMe();
+  })
+}
